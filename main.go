@@ -4,7 +4,7 @@ import (
 	"github.com/kolo/xmlrpc"
 )
 
-func client() (*xmlrpc.Client, error) {
+func rpcClient() (*xmlrpc.Client, error) {
 	return xmlrpc.NewClient("http://d.hatena.ne.jp/xmlrpc", nil)
 }
 
@@ -29,7 +29,7 @@ func (r *similarWordResp) toStringSlice() []string {
 }
 
 func SimilarWord(wordlist []string) ([]string, error) {
-	c, err := client()
+	c, err := rpcClient()
 	if err != nil {
 		return nil, err
 	}
